@@ -1,0 +1,17 @@
+// script.js
+document.getElementById('spinButton').addEventListener('click', function() {
+    let wheel = document.getElementById('wheel');
+    let randomDegree = Math.floor(Math.random() * 3600) + 360; // Randomly generate a spin
+    let rotation = `rotate(${randomDegree}deg)`;
+    
+    // Add the spin animation
+    wheel.style.transition = 'transform 5s ease-out';
+    wheel.style.transform = rotation;
+    
+    // Reset the spin after it completes
+    setTimeout(function() {
+        wheel.style.transition = 'none';
+        let actualRotation = randomDegree % 360;
+        wheel.style.transform = `rotate(${actualRotation}deg)`;
+    }, 5000); // 5 seconds to match the animation duration
+});
